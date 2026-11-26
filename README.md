@@ -9,3 +9,6 @@ Idag gjorde vi klart mastermind spelet och fick det att funka fenomenalt! Men vi
 
 2026-11-23
 Idag har vi skrivit klart kommentarerna i alla 3 koder. Vi har även testkört de en sista gång för att se att det inte finns några fel med koden. En lyckad dag!
+
+2026-11-26
+Idag fick alla i gruppen läsa igenom koden och leta efter eventuella förbättringsområden inom kommentarerna. Vi hittade lite småsaker och gjorde det tydligare.
