@@ -28,35 +28,35 @@ while True:
         
         if svårighetsnivå == "1":
             #Slumpar fram fyra olika siffror mellan 1 och 6
-            gissatal = random.sample(val, 4)
+            kod = random.sample(val, 4)
             break
         
         elif svårighetsnivå == "2":
             #Slumpar fram fyra siffror mellan 1 och 6, med möjlighet till upprepning
-            gissatal = [random.choice(val) for _ in range(4)]
+            kod = [random.choice(val) for _ in range(4)]
             break
         
         else:
             print("Ogiltigt val. Försök igen.")
-   # Räknare för hur många siffror som är på exakt rätt plats
+   # Den här listan håler reda på alla dina tidigare gisningar
     drag = []
 
 # Spelomgången pågår så länge spelaren har gjort färre än 12 drag
     while len(drag) < 12:
         gissning = input("Ange en gissning som följd af fyra siffror -> ")
-# Kontrollerar att gissningen är exakt 4 tecken lång och bara innehåller siffrorna 1–6
 
+# Kontrollerar att gissningen är exakt 4 tecken lång och bara innehåller siffrorna 1–6
         if len(gissning) != 4 or any(char not in val for char in gissning):
             print("Ogiltig gissning. Ange fyra siffror mellan 1 och 6.")
             continue
 
-# På lättare nivå kontrolleras att inga siffror upprepas (set tar bort dubbletter)
+# På lättare nivå kontrolleras att inga siffror upprepas ifal någon uprepas blir det ogiltigt
         if svårighetsnivå == "1" and len(set(gissning)) != 4:
             print("Ogiltig gissning. På lättare nivå får inga siffror upprepas.")
             continue
 
 # Skapar kopior av koden och gissningen som listor så vi kan bocka av träffar
-        kod_kopia = list(gissatal)
+        kod_kopia = list(kod)
         gissning_kopia = list(gissning)
 
 # Nollställer räknarna inför kontrollen av den nya gissningen
@@ -93,7 +93,7 @@ while True:
 # Ritar ut alla 12 rader uppifrån och ner (från drag 12 ner till drag 1)
         for nummer in range(12, 0, -1):
             if nummer <= len(drag):
-                # Hämtar och skriver ut tidigare gjorda drag och deras feedback
+                # Hämtar och skriver ut tidigare gjorda drag och deras feedback från drag listan
                 g, f = drag[nummer - 1]
                 print(f"{nummer:<15}{' '.join(g):<25}{f}")
             else:
@@ -108,7 +108,7 @@ while True:
 # Om alla 12 drag är förbrukade och sista gissningen inte var helt rätt avslöjas koden
     if len(drag) == 12 and drag[-1][1] != "✔✔✔✔":
         print("\nDu har slut på dina drag!")
-        print("Den rätta koden var:", "".join(gissatal))
+        print("Den rätta koden var:", "".join(kod))
 
         # Frågar om spelaren vill spela en ny omgång eller avsluta
     while True:
@@ -122,5 +122,4 @@ while True:
             exit()
         else:
             print("Ogiltigt val. Försök igen.")
-# Denna rad nås aldrig eftersom exit() stänger programmet ovan
-print("Programmet avslutas.")
+
